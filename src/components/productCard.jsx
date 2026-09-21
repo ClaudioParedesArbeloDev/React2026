@@ -1,21 +1,33 @@
+import { useState } from "react"
 import Contador from "./contador"
 
 function ProductCard ({...producto}) {
 
-    
+    const [cantidad, setCantidad] = useState(0)
+
+    const agregar = () => {
+        if (cantidad > 0) {
+            producto.onAgregar(cantidad)
+            setCantidad(0)
+        }
+    }
+
     return (
-      <div className="border  w-50 text-center rounded-xl m-4">
+      <div className="flex w-full flex-col items-center gap-3 overflow-hidden rounded-2xl border border-gray-200 bg-white pb-5 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
         <img
           src={producto.imagen}
           alt={producto.nombre}
-          className="w-full border-b-2"
+          className="h-48 w-full border-b border-gray-100 object-contain p-4 md:h-56"
         />
-        <h3 className="text-xl uppercase">{producto.nombre}</h3>
-        <p>{producto.precio}</p>
-        <Contador />
+        <h3 className="line-clamp-2 px-4 text-sm font-semibold uppercase text-gray-800">
+          {producto.nombre}
+        </h3>
+        <p className="text-xl font-bold text-amber-600">${producto.precio}</p>
+        <Contador cantidad={cantidad} setCantidad={setCantidad} />
         <button
-          onClick={producto.onAgregar}
-          className="bg-amber-600 p-2 rounded-xl text-blue-200 cursor-pointer"
+          onClick={agregar}
+          disabled={cantidad === 0}
+          className="cursor-pointer rounded-xl bg-amber-600 px-5 py-2 font-medium text-white transition-colors enabled:hover:bg-amber-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
           Agregar al carrito
         </button>
