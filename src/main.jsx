@@ -11,7 +11,7 @@ import NavBar from './components/navBar/navbar'
 import Footer from './components/footer/footer'
 import Home from './pages/home/home'
 import Products from './pages/products/products'
-
+import ProductoDetalle from './pages/productoDetalle/productoDetalle'
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -20,6 +20,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path='/product/:id' element={<ProductoDetalle/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
