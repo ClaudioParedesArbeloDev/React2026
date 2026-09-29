@@ -9,6 +9,7 @@ import './index.css'
 /* importamos componentes */
 import NavBar from './components/navBar/navbar'
 import Footer from './components/footer/footer'
+
 import Home from './pages/home/home'
 import Products from './pages/products/products'
 import ProductoDetalle from './pages/productoDetalle/productoDetalle'
