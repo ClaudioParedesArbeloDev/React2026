@@ -4,10 +4,14 @@ import { useParams, Link } from "react-router-dom";
 //importamos el componente contador
 import Contador from "../../components/contador"
 
+//importamos el hook del contexto del carrito
+import { useCart } from "../../context/CartContext"
+
 
 function ProductoDetalle () {
 
     const {id} = useParams()
+    const { agregarCarrito } = useCart()
 
 
     const [producto, setProducto] = useState(null)
@@ -22,7 +26,7 @@ function ProductoDetalle () {
 
     const agregarAlCarrito = () => {
         if (cantidad > 0) {
-            //por ahora solo mostramos un mensaje, despues lo conectamos al carrito
+            agregarCarrito(producto, cantidad)
             setMensaje(`Agregaste ${cantidad} unidad(es) al carrito`)
             setCantidad(1)
             setTimeout(() => setMensaje(""), 3000)

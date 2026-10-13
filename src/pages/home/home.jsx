@@ -5,14 +5,16 @@ import { useState, useEffect } from "react";
 //aca importamos el componente productCard
 import ProductCard from "../../components/productCard";
 
+//importamos el hook del contexto del carrito
+import { useCart } from "../../context/CartContext";
+
 
 //aca empezamos la funcion de la pagina
 const Home = () => {
 
   //Logica
-  //usamos el useState que lo empezamos como un array vacio
-  // y sirve para guardar en el carrito y setear el carrito
-  const [carrito, setCarrito] = useState([]);
+  //sacamos la funcion agregarCarrito del contexto, el carrito ya no vive aca
+  const { agregarCarrito } = useCart();
 
   //empezamos con un array vacio y declaramos los productos y el seteo de productos
   const [productos, setProductos] = useState([]);
@@ -26,24 +28,6 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => setProductos(data));
   }, []);
-
-  //funcion anonima en que los parametros son el producto a comprar y la cantidad,
-  //usa el metodo find en el acumulado carrito
-  const agregarCarrito = (producto, cantidad) => {
-    const existente = carrito.find((item) => item.id === producto.id);
-
-    if (existente) {
-      setCarrito(
-        carrito.map((item) =>
-          item.id === producto.id
-            ? { ...item, cantidad: item.cantidad + cantidad }
-            : item,
-        ),
-      );
-    } else {
-      setCarrito([...carrito, { ...producto, cantidad }]);
-    }
-  };
 
   //aca empezamos lo que es la experiencia del usuario
   return (
