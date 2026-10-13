@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-
+/* cargamos la imagen que vamos a usar */
 import logo from '../../assets/logo.png'
+/* importando context del carrito */
 import { useCart } from '../../context/CartContext'
+
 
 export default function NavBar (){
     /* JavaScript */

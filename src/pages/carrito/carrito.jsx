@@ -6,7 +6,7 @@ import { useCart } from "../../context/CartContext";
 //reutilizamos el contador que ya usamos en el detalle del producto
 import Contador from "../../components/contador";
 
-function Carrito() {
+const Carrito= () => {
   //sacamos del contexto todo lo que necesitamos para la pagina
   const {
     carrito,
