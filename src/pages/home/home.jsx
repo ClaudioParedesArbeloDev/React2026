@@ -24,7 +24,7 @@ const Home = () => {
   //empieza con una funcion flecha en donde estamos haciendo un fetch de una API y 
   //usamos el setProductos para acumular esa informacion en productos
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("http://localhost:8080/api/products")
       .then((response) => response.json())
       .then((data) => setProductos(data));
   }, []);
@@ -41,9 +41,9 @@ const Home = () => {
             <ProductCard
               key={producto.id}
               id={producto.id}
-              nombre={producto.title}
-              precio={producto.price}
-              imagen={producto.image}
+              nombre={producto.titulo}
+              precio={producto.precio}
+              imagen={producto.imagen}
               onAgregar={(cantidad) => agregarCarrito(producto, cantidad)}
             />
         ))}

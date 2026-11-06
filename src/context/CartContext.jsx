@@ -53,7 +53,7 @@ export function CartProvider({ children }) {
 
   //sumamos precio por cantidad de cada producto para el total a pagar
   const totalPrecio = carrito.reduce(
-    (total, item) => total + item.price * item.cantidad,
+    (total, item) => total + item.precio * item.cantidad,
     0,
   );
 

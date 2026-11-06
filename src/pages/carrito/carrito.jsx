@@ -46,8 +46,8 @@ const Carrito= () => {
               className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
             >
               <img
-                src={item.image}
-                alt={item.title}
+                src={item.imagen}
+                alt={item.nombre}
                 className="h-20 w-20 shrink-0 object-contain"
               />
 
@@ -56,9 +56,9 @@ const Carrito= () => {
                   to={`/product/${item.id}`}
                   className="line-clamp-2 font-medium text-gray-800 hover:text-amber-600"
                 >
-                  {item.title}
+                  {item.nombre}
                 </Link>
-                <p className="text-sm text-gray-500">${item.price} c/u</p>
+                <p className="text-sm text-gray-500">${item.precio} c/u</p>
 
                 {/* el contador espera setCantidad, le pasamos una funcion que actualiza el contexto */}
                 <Contador
@@ -69,7 +69,7 @@ const Carrito= () => {
 
               <div className="flex flex-col items-end gap-3">
                 <p className="font-bold text-amber-600">
-                  ${(item.price * item.cantidad).toFixed(2)}
+                  ${(item.precio * item.cantidad).toFixed(2)}
                 </p>
                 <button
                   onClick={() => eliminarDelCarrito(item.id)}

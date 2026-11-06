@@ -19,11 +19,11 @@ function ProductoDetalle () {
     const [mensaje, setMensaje] = useState("")
 
     useEffect(() => {
-      fetch(`https://fakestoreapi.com/products/${id}`)
+      fetch(`http://localhost:8080/api/products/${id}`)
         .then((response) => response.json())
         .then((data) => setProducto(data));
     }, [id]);
-
+    console.log(producto)
     const agregarAlCarrito = () => {
         if (cantidad > 0) {
             agregarCarrito(producto, cantidad)
@@ -55,8 +55,8 @@ function ProductoDetalle () {
                 {/* imagen */}
                 <div className="flex items-center justify-center rounded-2xl bg-gray-50 p-8">
                     <img
-                        src={producto.image}
-                        alt={producto.title}
+                        src={producto.imagen}
+                        alt={producto.titulo}
                         className="h-72 w-full object-contain transition-transform duration-300 hover:scale-105 md:h-96"
                     />
                 </div>
@@ -68,7 +68,7 @@ function ProductoDetalle () {
                     </span>
 
                     <h1 className="text-2xl font-bold text-gray-900 md:text-3xl">
-                        {producto.title}
+                        {producto.nombre}
                     </h1>
 
                     {producto.rating && (
@@ -77,7 +77,7 @@ function ProductoDetalle () {
                         </p>
                     )}
 
-                    <p className="text-4xl font-bold text-amber-600">${producto.price}</p>
+                    <p className="text-4xl font-bold text-amber-600">${producto.precio}</p>
 
                     <p className="leading-relaxed text-gray-600">{producto.description}</p>
 
